@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <myel></myel>
+    </div>
+
+    <template id="tem1">
+        <div>
+            <h1>这是用外部模板生成的H1</h1>
+            <h3>带提示，好用</h3>
+        </div>
+    </template>
+</body>
+<script>
+    
+    // var com1 = Vue.extend({
+    //     template: '<h3>这是使用组件创建的H3</h3>'
+    // })
+
+    // Vue.component('myel', com1)
+
+    // 合并写法
+    // Vue.component('myel', Vue.extend({
+    //     template: '<h3>这是使用组件创建的H3</h3>'
+    // }))
+
+
+
+    // 第二种写法
+    // Vue.component('myel', {
+    //     template: '<h3>这是使用component直接创建的H3</h3>'
+    // })
+
+
+    // 第三种写法
+    Vue.component('myel', {
+        template: '#tem1'
+    })
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+</html>

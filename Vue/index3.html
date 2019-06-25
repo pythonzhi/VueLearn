@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    #vm input:nth-child(1){
+        display: block;
+        width: 100px;
+        height: 30px;
+    }
+    #vm input.focus{
+        color: #fff;
+        background-color: red;
+        font-weight: bolder;
+    }
+</style>
+<body>
+    <div id="vm">
+        <input type="button" value="点我" :class='{"focus": isFocus}' @click="onFocus()">
+        <input type="button" value="选中" @click="ad()">
+        <input type="button" value="取消" @click="re()">
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#vm",
+        data: {
+            isFocus: false,
+            ad(){
+                this.onFocus(true)
+            },
+            re(){
+                this.onFocus(false)
+            }
+        },
+        methods:{
+            onFocus(a){
+                return this.isFocus = a
+            }
+        }
+    })
+</script>
+</html>

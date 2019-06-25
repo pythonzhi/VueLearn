@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 交给Vue控制的顶层元素 -->
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{ 1+2 }}</p>
+        <p>{{ true ? '123' : '456' }}</p>
+        <div>
+            {{sHTML}}
+        </div>
+        <div v-html="sHTML"></div>
+        <p v-bind:class='sClass'></p>
+        <input type="button" value="确定" v-on:click='add()'>
+        <p>{{count}}</p>
+
+        <p>{{ text }}</p>
+        <input type="text" v-model='text'><br>
+        <input type="checkbox" v-model='ischecked'><br>
+        <label><input type="radio" name="sex" v-model='sex'>男</label><br>
+        <label><input type="radio" name="sex" v-model='sex'>女</label><br>
+        <p>------------------------------------------------------------</p>
+        <!-- <div v-show='isShow'>这是一个div标签</div> -->
+        <div v-if='isShow'>这是一个div标签</div>
+    </div>
+    
+</body> 
+<script>
+    // 实例对象（面向对象）
+    var vm = new Vue({
+        el: "#app", // 告诉vue 页面中的哪个元素开始交给vue来控制
+        data: {// 页面中要展示的数据
+            message: 'hello world',
+            sHTML: '<h2>这是一个标题</h2>',
+            sClass: 'focus',
+            count: 1,
+            text: '今天天气不错，风和日丽',
+            ischecked: true,
+            sex: true,
+            isShow: false,
+            add () {
+                this.count ++;
+            },
+        }
+    });
+</script>
+</html>

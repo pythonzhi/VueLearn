@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 交给Vue控制的顶层元素 -->
+    <div id="app">
+        <p>
+            <input type="button" value="-" @click="count <= 0 ? 0 : count --">
+            水果蛋糕
+            <input type="button" value="+" @click="count ++">
+            单价：
+            <span>{{rmb}}{{ price.toFixed(2) }}元</span>
+            <span>{{ count }}</span>个
+            小计：
+            <span>{{rmb}}{{ countMoney }}元</span>
+        </p>
+    </div>
+        
+</body>
+    <script>
+        // 实例对象（面向对象）
+        var vm = new Vue({
+            el: "#app", 
+            data: {
+                count: 0,
+                price: 30,
+                contry: 0,
+                contryList: ['￥', '$', '€', '฿']
+            },
+            computed: { // 所有属性都应该是函数（方法）  只用来计算，不传参数
+                countMoney(){
+                    return (this.count * this.price).toFixed(2); // toFixed()方法 保留小数点后几位
+                },
+                rmb(){
+                    return this.contryList[this.contry];
+                }
+            },
+            methods: { // 可接受参数进行计算。
+
+            }
+        });
+    </script>
+</html>

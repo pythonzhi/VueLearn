@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Time</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in list" :key="item.id">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.ctime }}</td>
+                    <td><input type="button" value="删除"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            list: [
+
+            ]
+        },
+        created(){
+            this.readAll()
+        },
+        methods: {
+            readAll () {
+                axios.get('http://vue.studyit.io/api/getprodlist').then(res=>{
+                    console.log(res)
+                })
+            }
+        },
+    })
+</script>
+</html>

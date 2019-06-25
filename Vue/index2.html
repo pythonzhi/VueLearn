@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <!-- 交给Vue控制的顶层元素 -->
+        <div id="app">
+            <p>当前时间戳：{{ getTimeStamp }}</p>
+            <p>当前时间戳：{{ getNowTime() }}</p>
+        </div>
+            
+    </body>
+        <script>
+            // 实例对象（面向对象）
+            var vm = new Vue({
+                el: "#app", 
+                data: {
+                    
+                },
+                computed: { // 所有属性都应该是函数（方法）  只用来计算，不传参数
+                    getTimeStamp(){
+                        return (new Date()).getTime();
+                    }
+                },
+                methods: { // 可接受参数进行计算。
+                    getNowTime(){
+                        return (new Date()).getTime();
+                    }
+                }
+            });
+        </script>
+</html>
